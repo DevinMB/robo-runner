@@ -7,7 +7,7 @@ r = redis.Redis(host='192.168.1.250', port=6379, db=0)
 camera = cv2.VideoCapture(0)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
-camera.set(cv2.CAP_PROP_FPS, 60) 
+camera.set(cv2.CAP_PROP_FPS, 30) 
 
 while True:
     ret, frame = camera.read()
@@ -29,7 +29,7 @@ while True:
 
     r.set('video_stream', buffer.tobytes())
 
-    # (for 60 FPS)
-    time.sleep(0.01667)
+    # (for 30 FPS)
+    time.sleep(0.03334)
 
 camera.release()
