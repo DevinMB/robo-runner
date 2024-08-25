@@ -4,3 +4,4 @@
 /Other-Nonsense/*
 */venv/*
 */build/*
+*.spec
