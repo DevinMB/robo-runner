@@ -4,5 +4,5 @@
 /Other-Nonsense/*
 */venv/*
 */build/*
-# *.spec
-# */dist/*
+*.spec
+*/dist/*
