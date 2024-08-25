@@ -9,7 +9,6 @@ while True:
         frame_data = r.get('video_stream')
 
         if frame_data:
-            # Convert bytes to numpy array
             np_arr = np.frombuffer(frame_data, np.uint8)
             frame = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
                        
