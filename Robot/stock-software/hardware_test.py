@@ -2,7 +2,7 @@
 # coding=utf8
 import sys
 import time
-import HiwonderSDK.Board as Board
+import Board as Board
 
 if sys.version_info.major == 2:
     print('Please run this program with python3!')
