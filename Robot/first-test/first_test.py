@@ -99,17 +99,17 @@ try:
 
             elif move_command == 'strafe_left':
                 # Turn left (motors 1 and 3 backward, motors 2 and 4 forward)
-                Board.setMotor(1, -60)
-                Board.setMotor(2, 60)
-                Board.setMotor(3, 60)
-                Board.setMotor(4, -60)
-
-            elif move_command == 'strafe_right':
-                # Turn right (motors 1 and 3 forward, motors 2 and 4 backward)
                 Board.setMotor(1, 60)
                 Board.setMotor(2, -60)
                 Board.setMotor(3, -60)
                 Board.setMotor(4, 60)
+
+            elif move_command == 'strafe_right':
+                # Turn right (motors 1 and 3 forward, motors 2 and 4 backward)
+                Board.setMotor(1, -60)
+                Board.setMotor(2, 60)
+                Board.setMotor(3, 60)
+                Board.setMotor(4, -60)
             
             elif move_command == 'none':
                 # Stop all motors
