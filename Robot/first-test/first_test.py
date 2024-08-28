@@ -95,7 +95,7 @@ try:
                 Board.setMotor(2, 0)
                 Board.setMotor(3, 0)
                 Board.setMotor(4, 0)
-
+        print(f"servo1-p: {servo1_position} servo2-p: {servo2_position}")
         # Sleep for a short time to avoid overwhelming the Redis server
         time.sleep(0.1)
 
