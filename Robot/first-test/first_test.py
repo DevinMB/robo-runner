@@ -29,8 +29,8 @@ video_feed.start()
 try:
 
     Board.setPWMServoPulse(1, servo1_position, 300)
+    time.sleep(1)
     Board.setPWMServoPulse(2, servo2_position, 300)
-    
     time.sleep(1)
 
     while True:
