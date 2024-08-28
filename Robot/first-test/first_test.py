@@ -7,14 +7,14 @@ import redis
 r = redis.Redis(host='192.168.1.250', port=6379, db=0)
 
 # Initialize the current servo positions
-servo1_position = 2000  # Default neutral position
+servo1_position = 700  # Default neutral position
 servo2_position = 1500  # Default neutral position
 
 # Define the step size for each movement
 servo_step = 50
 
 # Define the limits for the servo positions
-vertical_servo_min = 800  
+vertical_servo_min = 400  
 vertical_servo_max = 2000
 
 horizontal_servo_min = 200  
