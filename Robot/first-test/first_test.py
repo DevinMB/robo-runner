@@ -84,14 +84,14 @@ try:
                 Board.setMotor(3, -100)
                 Board.setMotor(4, -100)
 
-            elif move_command == 'turn_left':
+            elif move_command == 'turnleft':
                 # Turn left (motors 1 and 3 backward, motors 2 and 4 forward)
                 Board.setMotor(1, -60)
                 Board.setMotor(2, 60)
                 Board.setMotor(3, -60)
                 Board.setMotor(4, 60)
 
-            elif move_command == 'turn_right':
+            elif move_command == 'turnright':
                 # Turn right (motors 1 and 3 forward, motors 2 and 4 backward)
                 Board.setMotor(1, 60)
                 Board.setMotor(2, -60)

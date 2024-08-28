@@ -19,9 +19,9 @@ def on_press(key):
         elif key.char == 's':
             move_command = 'backward'
         elif key.char == 'a':
-            move_command = 'turn_left'
+            move_command = 'turnleft'
         elif key.char == 'd':
-            move_command = 'turn_right'
+            move_command = 'turnright'
         elif key.char == 'q':
             move_command = 'strafe_left'
         elif key.char == 'e':
