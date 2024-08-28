@@ -63,31 +63,31 @@ try:
 
             if move_command == 'forward':
                 # Move all motors forward
-                Board.setMotor(1, 45)
-                Board.setMotor(2, 45)
-                Board.setMotor(3, 45)
-                Board.setMotor(4, 45)
+                Board.setMotor(1, 60)
+                Board.setMotor(2, 60)
+                Board.setMotor(3, 60)
+                Board.setMotor(4, 60)
 
             elif move_command == 'backward':
                 # Move all motors backward
-                Board.setMotor(1, -45)
-                Board.setMotor(2, -45)
-                Board.setMotor(3, -45)
-                Board.setMotor(4, -45)
+                Board.setMotor(1, -60)
+                Board.setMotor(2, -60)
+                Board.setMotor(3, -60)
+                Board.setMotor(4, -60)
 
             elif move_command == 'left':
                 # Turn left (motors 1 and 3 backward, motors 2 and 4 forward)
-                Board.setMotor(1, -45)
-                Board.setMotor(2, 45)
-                Board.setMotor(3, -45)
-                Board.setMotor(4, 45)
+                Board.setMotor(1, -60)
+                Board.setMotor(2, 60)
+                Board.setMotor(3, -60)
+                Board.setMotor(4, 60)
 
             elif move_command == 'right':
                 # Turn right (motors 1 and 3 forward, motors 2 and 4 backward)
-                Board.setMotor(1, 45)
-                Board.setMotor(2, -45)
-                Board.setMotor(3, 45)
-                Board.setMotor(4, -45)
+                Board.setMotor(1, 60)
+                Board.setMotor(2, -60)
+                Board.setMotor(3, 60)
+                Board.setMotor(4, -60)
 
             elif move_command == 'none':
                 # Stop all motors
