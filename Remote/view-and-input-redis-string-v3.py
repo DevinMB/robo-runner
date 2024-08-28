@@ -12,6 +12,7 @@ look_command = "none"
 
 def on_press(key):
     global move_command
+    global look_command
     try:
         if key.char == 'w':
             move_command = 'forward'
@@ -62,8 +63,6 @@ while True:
 
             r.set('robot_move_command', move_command, ex=input_timeout)
             r.set('robot_look_command', look_command, ex=input_timeout)
-
-            print(cv2.waitKey())
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break

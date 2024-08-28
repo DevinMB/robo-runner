@@ -19,16 +19,28 @@ class VideoFeed(threading.Thread):
             if not ret:
                 break
 
-            current_command = self.r.get('robot_command')
+            move_command = self.r.get('robot_move_command')
+            look_command = self.r.get('robot_look_command')
 
-            if current_command is None:
-                current_command = "none"
+            if move_command is None:
+                move_command = "none"
             else:
-                current_command = current_command.decode('utf-8')
+                move_command = move_command.decode('utf-8')
 
-            overlay_text = f"Current Command: {current_command}"
-            cv2.putText(frame, overlay_text, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 
+            overlay_text_move = f"Movement Command: {move_command}"
+            cv2.putText(frame, overlay_text_move, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 
                         0.5, (255, 0, 0), 1, cv2.LINE_AA)
+
+            if look_command is None:
+                look_command = "none"
+            else:
+                look_command = look_command.decode('utf-8')
+
+            overlay_text_look = f"Movement Command: {look_command}"
+            cv2.putText(frame, overlay_text_look, (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 
+                        0.5, (255, 0, 0), 1, cv2.LINE_AA)
+
+            
 
             _, buffer = cv2.imencode('.jpg', frame)
 
