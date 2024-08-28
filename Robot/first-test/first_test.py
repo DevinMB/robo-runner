@@ -6,9 +6,13 @@ import redis
 # Set up Redis connection
 r = redis.Redis(host='192.168.1.250', port=6379, db=0)
 
+# Set Home Position
+servo1_home_position = 1050  # Default neutral position
+servo2_home_position = 1600  # Default neutral position
+
 # Initialize the current servo positions
-servo1_position = 1050  # Default neutral position
-servo2_position = 1600  # Default neutral position
+servo1_position = servo1_home_position  
+servo2_position = servo2_home_position  
 
 # Define the step size for each movement
 servo_step = 50
@@ -57,38 +61,57 @@ try:
                 # Increment the servo2 position
                 servo2_position = min(servo2_position + servo_step, horizontal_servo_max)
                 Board.setPWMServoPulse(2, servo2_position, 300)
+            elif look_command == 'look_home':
+                Board.setPWMServoPulse(1, servo1_position, 300)
+                time.sleep(1)
+                Board.setPWMServoPulse(2, servo2_position, 300)
+                time.sleep(1)
 
         if move_command is not None:
             move_command = move_command.decode('utf-8')
 
             if move_command == 'forward':
                 # Move all motors forward
-                Board.setMotor(1, 60)
-                Board.setMotor(2, 60)
-                Board.setMotor(3, 60)
-                Board.setMotor(4, 60)
+                Board.setMotor(1, 100)
+                Board.setMotor(2, 100)
+                Board.setMotor(3, 100)
+                Board.setMotor(4, 100)
 
             elif move_command == 'backward':
                 # Move all motors backward
-                Board.setMotor(1, -60)
-                Board.setMotor(2, -60)
-                Board.setMotor(3, -60)
-                Board.setMotor(4, -60)
+                Board.setMotor(1, -100)
+                Board.setMotor(2, -100)
+                Board.setMotor(3, -100)
+                Board.setMotor(4, -100)
 
-            elif move_command == 'left':
+            elif move_command == 'turn_left':
                 # Turn left (motors 1 and 3 backward, motors 2 and 4 forward)
                 Board.setMotor(1, -60)
                 Board.setMotor(2, 60)
                 Board.setMotor(3, -60)
                 Board.setMotor(4, 60)
 
-            elif move_command == 'right':
+            elif move_command == 'turn_right':
                 # Turn right (motors 1 and 3 forward, motors 2 and 4 backward)
                 Board.setMotor(1, 60)
                 Board.setMotor(2, -60)
                 Board.setMotor(3, 60)
                 Board.setMotor(4, -60)
 
+            elif move_command == 'strafe_left':
+                # Turn left (motors 1 and 3 backward, motors 2 and 4 forward)
+                Board.setMotor(1, -60)
+                Board.setMotor(2, 60)
+                Board.setMotor(3, 60)
+                Board.setMotor(4, -60)
+
+            elif move_command == 'strafe_right':
+                # Turn right (motors 1 and 3 forward, motors 2 and 4 backward)
+                Board.setMotor(1, 60)
+                Board.setMotor(2, -60)
+                Board.setMotor(3, -60)
+                Board.setMotor(4, 60)
+            
             elif move_command == 'none':
                 # Stop all motors
                 Board.setMotor(1, 0)

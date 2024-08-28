@@ -19,9 +19,13 @@ def on_press(key):
         elif key.char == 's':
             move_command = 'backward'
         elif key.char == 'a':
-            move_command = 'left'
+            move_command = 'turn_left'
         elif key.char == 'd':
-            move_command = 'right'
+            move_command = 'turn_right'
+        elif key.char == 'q':
+            move_command = 'strafe_left'
+        elif key.char == 'e':
+            move_command = 'strafe_right'
     except AttributeError:
         pass
 
@@ -34,6 +38,8 @@ def on_press(key):
             look_command = 'look_left'
         elif key.char == ';':
             look_command = 'look_right'
+        elif key.char == '0':
+            look_command = 'look_home'
     except AttributeError:
         pass
 
@@ -64,7 +70,7 @@ while True:
             r.set('robot_move_command', move_command, ex=input_timeout)
             r.set('robot_look_command', look_command, ex=input_timeout)
 
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            if cv2.waitKey(1) & 0xFF == ord('1'):
                 break
 
         else:
