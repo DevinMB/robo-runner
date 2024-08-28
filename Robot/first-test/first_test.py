@@ -14,11 +14,11 @@ servo2_position = 1600  # Default neutral position
 servo_step = 50
 
 # Define the limits for the servo positions
-vertical_servo_min = 400  
-vertical_servo_max = 2000
+vertical_servo_min = 500  
+vertical_servo_max = 1500
 
-horizontal_servo_min = 200  
-horizontal_servo_max = 3200
+horizontal_servo_min = 500  
+horizontal_servo_max = 2500
 
 
 
