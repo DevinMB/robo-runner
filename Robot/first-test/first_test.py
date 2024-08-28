@@ -13,8 +13,8 @@ video_feed.start()
 try:
     while True:
         # Fetch the current command from Redis
-        move_command = r.get('move_command')
-        move_command = r.get('look_command')
+        move_command = r.get('robot_move_command')
+        look_command = r.get('robot_look_command')
 
         if look_command is not None: 
             look_command = look_command.decode('utf-8')
@@ -27,8 +27,6 @@ try:
                 Board.setPWMServoPulse(2, 1200, 300)
             elif look_command == 'look_right':
                 Board.setPWMServoPulse(2, 1800, 300)
-
-        
 
         if move_command is not None:
             move_command = move_command.decode('utf-8')

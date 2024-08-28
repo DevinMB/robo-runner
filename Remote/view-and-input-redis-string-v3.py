@@ -61,7 +61,7 @@ while True:
             cv2.imshow('Video Stream', frame)
 
             r.set('robot_move_command', move_command, ex=input_timeout)
-            r.set('robot_move_command', look_command, ex=input_timeout)
+            r.set('robot_look_command', look_command, ex=input_timeout)
 
             print(cv2.waitKey())
 
