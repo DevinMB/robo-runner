@@ -18,7 +18,7 @@ vertical_servo_min = 400
 vertical_servo_max = 2000
 
 horizontal_servo_min = 200  
-horizontal_servo_max = 3100
+horizontal_servo_max = 3200
 
 
 
