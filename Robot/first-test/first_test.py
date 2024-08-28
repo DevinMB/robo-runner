@@ -18,7 +18,7 @@ vertical_servo_min = 800
 vertical_servo_max = 2000
 
 horizontal_servo_min = 200  
-horizontal_servo_max = 2800
+horizontal_servo_max = 3000
 
 
 
@@ -27,6 +27,12 @@ video_feed = VideoFeed()
 video_feed.start()
 
 try:
+
+    Board.setPWMServoPulse(1, servo1_position, 300)
+    Board.setPWMServoPulse(2, servo2_position, 300)
+    
+    time.sleep(1)
+
     while True:
         # Fetch the current command from Redis
         move_command = r.get('robot_move_command')
