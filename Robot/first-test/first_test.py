@@ -30,19 +30,19 @@ try:
         if look_command is not None: 
             look_command = look_command.decode('utf-8')
 
-            if look_command == 'look_up':
+            if look_command == 'look_down':
                 # Increment the servo1 position
                 servo1_position = min(servo1_position + servo_step, servo_max)
                 Board.setPWMServoPulse(1, servo1_position, 300)
-            elif look_command == 'look_down':
+            elif look_command == 'look_up':
                 # Decrement the servo1 position
                 servo1_position = max(servo1_position - servo_step, servo_min)
                 Board.setPWMServoPulse(1, servo1_position, 300)
-            elif look_command == 'look_left':
+            elif look_command == 'look_right':
                 # Decrement the servo2 position
                 servo2_position = max(servo2_position - servo_step, servo_min)
                 Board.setPWMServoPulse(2, servo2_position, 300)
-            elif look_command == 'look_right':
+            elif look_command == 'look_left':
                 # Increment the servo2 position
                 servo2_position = min(servo2_position + servo_step, servo_max)
                 Board.setPWMServoPulse(2, servo2_position, 300)
