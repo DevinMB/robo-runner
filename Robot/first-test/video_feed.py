@@ -36,7 +36,7 @@ class VideoFeed(threading.Thread):
             else:
                 look_command = look_command.decode('utf-8')
 
-            overlay_text_look = f"Movement Command: {look_command}"
+            overlay_text_look = f"Look Command: {look_command}"
             cv2.putText(frame, overlay_text_look, (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 
                         0.5, (255, 0, 0), 1, cv2.LINE_AA)
 

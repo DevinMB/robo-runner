@@ -6,6 +6,17 @@ import redis
 # Set up Redis connection
 r = redis.Redis(host='192.168.1.250', port=6379, db=0)
 
+# Initialize the current servo positions
+servo1_position = 1500  # Default neutral position
+servo2_position = 1500  # Default neutral position
+
+# Define the step size for each movement
+servo_step = 50
+
+# Define the limits for the servo positions
+servo_min = 1200
+servo_max = 1800
+
 # Create and start the video feed thread
 video_feed = VideoFeed()
 video_feed.start()
@@ -20,13 +31,21 @@ try:
             look_command = look_command.decode('utf-8')
 
             if look_command == 'look_up':
-                Board.setPWMServoPulse(1, 1800, 300) 
+                # Increment the servo1 position
+                servo1_position = min(servo1_position + servo_step, servo_max)
+                Board.setPWMServoPulse(1, servo1_position, 300)
             elif look_command == 'look_down':
-                Board.setPWMServoPulse(1, 1200, 300)
+                # Decrement the servo1 position
+                servo1_position = max(servo1_position - servo_step, servo_min)
+                Board.setPWMServoPulse(1, servo1_position, 300)
             elif look_command == 'look_left':
-                Board.setPWMServoPulse(2, 1200, 300)
+                # Decrement the servo2 position
+                servo2_position = max(servo2_position - servo_step, servo_min)
+                Board.setPWMServoPulse(2, servo2_position, 300)
             elif look_command == 'look_right':
-                Board.setPWMServoPulse(2, 1800, 300)
+                # Increment the servo2 position
+                servo2_position = min(servo2_position + servo_step, servo_max)
+                Board.setPWMServoPulse(2, servo2_position, 300)
 
         if move_command is not None:
             move_command = move_command.decode('utf-8')
