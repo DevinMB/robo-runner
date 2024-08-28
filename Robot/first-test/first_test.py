@@ -14,8 +14,13 @@ servo2_position = 1500  # Default neutral position
 servo_step = 50
 
 # Define the limits for the servo positions
-servo_min = 1200
-servo_max = 1800
+vertical_servo_min = 800  
+vertical_servo_max = 2000
+
+horizontal_servo_min = 200  
+horizontal_servo_max = 2000
+
+
 
 # Create and start the video feed thread
 video_feed = VideoFeed()
@@ -32,19 +37,19 @@ try:
 
             if look_command == 'look_down':
                 # Increment the servo1 position
-                servo1_position = min(servo1_position + servo_step, servo_max)
+                servo1_position = min(servo1_position + servo_step, vertical_servo_max)
                 Board.setPWMServoPulse(1, servo1_position, 300)
             elif look_command == 'look_up':
                 # Decrement the servo1 position
-                servo1_position = max(servo1_position - servo_step, servo_min)
+                servo1_position = max(servo1_position - servo_step, vertical_servo_min)
                 Board.setPWMServoPulse(1, servo1_position, 300)
             elif look_command == 'look_right':
                 # Decrement the servo2 position
-                servo2_position = max(servo2_position - servo_step, servo_min)
+                servo2_position = max(servo2_position - servo_step, horizontal_servo_min)
                 Board.setPWMServoPulse(2, servo2_position, 300)
             elif look_command == 'look_left':
                 # Increment the servo2 position
-                servo2_position = min(servo2_position + servo_step, servo_max)
+                servo2_position = min(servo2_position + servo_step, horizontal_servo_max)
                 Board.setPWMServoPulse(2, servo2_position, 300)
 
         if move_command is not None:
