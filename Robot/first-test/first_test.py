@@ -62,10 +62,9 @@ try:
                 servo2_position = min(servo2_position + servo_step, horizontal_servo_max)
                 Board.setPWMServoPulse(2, servo2_position, 300)
             elif look_command == 'look_home':
-                Board.setPWMServoPulse(1, servo1_position, 300)
-                time.sleep(1)
-                Board.setPWMServoPulse(2, servo2_position, 300)
-                time.sleep(1)
+                Board.setPWMServoPulse(1, servo1_home_position, 300)
+                Board.setPWMServoPulse(2, servo2_home_position, 300)
+                
 
         if move_command is not None:
             move_command = move_command.decode('utf-8')
