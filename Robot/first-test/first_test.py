@@ -13,40 +13,55 @@ video_feed.start()
 try:
     while True:
         # Fetch the current command from Redis
-        current_command = r.get('robot_command')
+        move_command = r.get('move_command')
+        move_command = r.get('look_command')
 
-        if current_command is not None:
-            current_command = current_command.decode('utf-8')
+        if look_command is not None: 
+            look_command = look_command.decode('utf-8')
 
-            if current_command == 'forward':
+            if look_command == 'look_up':
+                Board.setPWMServoPulse(1, 1800, 300) 
+            elif look_command == 'look_down':
+                Board.setPWMServoPulse(1, 1200, 300)
+            elif look_command == 'look_left':
+                Board.setPWMServoPulse(2, 1200, 300)
+            elif look_command == 'look_right':
+                Board.setPWMServoPulse(2, 1800, 300)
+
+        
+
+        if move_command is not None:
+            move_command = move_command.decode('utf-8')
+
+            if move_command == 'forward':
                 # Move all motors forward
                 Board.setMotor(1, 45)
                 Board.setMotor(2, 45)
                 Board.setMotor(3, 45)
                 Board.setMotor(4, 45)
 
-            elif current_command == 'backward':
+            elif move_command == 'backward':
                 # Move all motors backward
                 Board.setMotor(1, -45)
                 Board.setMotor(2, -45)
                 Board.setMotor(3, -45)
                 Board.setMotor(4, -45)
 
-            elif current_command == 'left':
+            elif move_command == 'left':
                 # Turn left (motors 1 and 3 backward, motors 2 and 4 forward)
                 Board.setMotor(1, -45)
                 Board.setMotor(2, 45)
                 Board.setMotor(3, -45)
                 Board.setMotor(4, 45)
 
-            elif current_command == 'right':
+            elif move_command == 'right':
                 # Turn right (motors 1 and 3 forward, motors 2 and 4 backward)
                 Board.setMotor(1, 45)
                 Board.setMotor(2, -45)
                 Board.setMotor(3, 45)
                 Board.setMotor(4, -45)
 
-            elif current_command == 'none':
+            elif move_command == 'none':
                 # Stop all motors
                 Board.setMotor(1, 0)
                 Board.setMotor(2, 0)
