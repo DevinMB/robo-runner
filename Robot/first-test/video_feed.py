@@ -29,7 +29,7 @@ class VideoFeed(threading.Thread):
 
             overlay_text_move = f"Movement Command: {move_command}"
             cv2.putText(frame, overlay_text_move, (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 
-                        0.5, (255, 0, 0), 1, cv2.LINE_AA)
+                        0.5, (255, 255, 0), 1, cv2.LINE_AA)
 
             if look_command is None:
                 look_command = "none"
@@ -38,7 +38,7 @@ class VideoFeed(threading.Thread):
 
             overlay_text_look = f"Look Command: {look_command}"
             cv2.putText(frame, overlay_text_look, (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 
-                        0.5, (255, 0, 0), 1, cv2.LINE_AA)
+                        0.5, (255, 255, 0), 1, cv2.LINE_AA)
 
             
 
