@@ -21,7 +21,8 @@ class BatteryFeed(threading.Thread):
                 sum_of_levels += battery_level
                 
             avg_level = sum_of_levels / check_count
-            self.r.set('battery_level', avg_level)
+
+            self.r.set('battery_level', int(avg_level))
 
             check_count = 0
             sum_of_levels = 0
