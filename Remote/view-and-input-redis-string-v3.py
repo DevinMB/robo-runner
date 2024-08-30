@@ -67,7 +67,6 @@ while True:
             np_arr = np.frombuffer(frame_data, np.uint8)
             frame = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
             
-            cv2.rectangle(frame, (5, 475), (450, 440), (169, 169, 169), -1) 
 
             overlay_text_look = f"Battery Level: {battery_level}"
             cv2.putText(frame, overlay_text_look, (10, 455), cv2.FONT_HERSHEY_SIMPLEX, 

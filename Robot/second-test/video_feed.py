@@ -29,6 +29,9 @@ class VideoFeed(threading.Thread):
             else:
                 move_command = move_command.decode('utf-8')
 
+
+            cv2.rectangle(frame, (5, 475), (450, 440), (169, 169, 169), -1) 
+
             overlay_text_move = f"Movement Command: {move_command}"
             cv2.putText(frame, overlay_text_move, (150, 455), cv2.FONT_HERSHEY_SIMPLEX, 
                         0.45, (255, 255, 0), 1, cv2.LINE_AA)
