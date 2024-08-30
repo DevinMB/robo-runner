@@ -67,13 +67,17 @@ while True:
             np_arr = np.frombuffer(frame_data, np.uint8)
             frame = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
             
+            cv2.rectangle(frame, (5, 475), (450, 440), (169, 169, 169), -1) 
+
             overlay_text_look = f"Battery Level: {battery_level}"
-            cv2.putText(frame, overlay_text_look, (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 
+            cv2.putText(frame, overlay_text_look, (10, 455), cv2.FONT_HERSHEY_SIMPLEX, 
                         0.4, (255, 255, 0), 1, cv2.LINE_AA)
             
             overlay_text_look = f"Don't go below: 6600"
-            cv2.putText(frame, overlay_text_look, (10, 105), cv2.FONT_HERSHEY_SIMPLEX, 
+            cv2.putText(frame, overlay_text_look, (10, 470), cv2.FONT_HERSHEY_SIMPLEX, 
                         0.4, (255, 255, 0), 1, cv2.LINE_AA)
+            
+            
             
             cv2.imshow('Video Stream', frame)
 

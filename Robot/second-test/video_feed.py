@@ -30,8 +30,8 @@ class VideoFeed(threading.Thread):
                 move_command = move_command.decode('utf-8')
 
             overlay_text_move = f"Movement Command: {move_command}"
-            cv2.putText(frame, overlay_text_move, (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 
-                        0.5, (255, 255, 0), 1, cv2.LINE_AA)
+            cv2.putText(frame, overlay_text_move, (150, 455), cv2.FONT_HERSHEY_SIMPLEX, 
+                        0.45, (255, 255, 0), 1, cv2.LINE_AA)
 
             if look_command is None:
                 look_command = "none"
@@ -39,8 +39,8 @@ class VideoFeed(threading.Thread):
                 look_command = look_command.decode('utf-8')
 
             overlay_text_look = f"Look Command: {look_command}"
-            cv2.putText(frame, overlay_text_look, (10, 40), cv2.FONT_HERSHEY_SIMPLEX, 
-                        0.5, (255, 255, 0), 1, cv2.LINE_AA)
+            cv2.putText(frame, overlay_text_look, (150, 470), cv2.FONT_HERSHEY_SIMPLEX, 
+                        0.4, (255, 255, 0), 1, cv2.LINE_AA)
             
 
             _, buffer = cv2.imencode('.jpg', frame)
