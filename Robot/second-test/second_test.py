@@ -1,6 +1,7 @@
 import time
 import Board as Board
 from video_feed import VideoFeed
+from battery_feed import BatteryFeed
 import redis
 
 # Set up Redis connection
@@ -29,6 +30,10 @@ horizontal_servo_max = 2500
 # Create and start the video feed thread
 video_feed = VideoFeed()
 video_feed.start()
+
+# Create and start the battery feed
+battery_feed = BatteryFeed()
+battery_feed.start()
 
 try:
 
