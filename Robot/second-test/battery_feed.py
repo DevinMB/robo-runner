@@ -17,6 +17,7 @@ class BatteryFeed(threading.Thread):
             sum_of_levels = 0
             while check_count <= 10:
                 battery_level =Board.getBattery()
+                check_count += 1
                 sum_of_levels += battery_level
                 
             avg_level = sum_of_levels / check_count
