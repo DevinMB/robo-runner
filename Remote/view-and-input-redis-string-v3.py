@@ -59,12 +59,22 @@ while True:
     try:
 
         frame_data = r.get('video_stream')
+        battery_level = r.get('battery_level').decode('utf-8')
 
 
         if frame_data:
 
             np_arr = np.frombuffer(frame_data, np.uint8)
             frame = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+            
+            overlay_text_look = f"Battery Level: {battery_level}"
+            cv2.putText(frame, overlay_text_look, (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 
+                        0.4, (255, 255, 0), 1, cv2.LINE_AA)
+            
+            overlay_text_look = f"Don't go below: 6600"
+            cv2.putText(frame, overlay_text_look, (10, 105), cv2.FONT_HERSHEY_SIMPLEX, 
+                        0.4, (255, 255, 0), 1, cv2.LINE_AA)
+            
             cv2.imshow('Video Stream', frame)
 
             r.set('robot_move_command', move_command, ex=input_timeout)
