@@ -1,7 +1,6 @@
 import cv2
 import redis
 import time
-import Board as Board
 import threading
 
 
@@ -23,7 +22,6 @@ class VideoFeed(threading.Thread):
                             
             move_command = self.r.get('robot_move_command')
             look_command = self.r.get('robot_look_command')
-            batter_level =Board.getBattery()
             
             print(batter_level)
 
