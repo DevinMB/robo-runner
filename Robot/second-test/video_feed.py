@@ -23,7 +23,6 @@ class VideoFeed(threading.Thread):
             move_command = self.r.get('robot_move_command')
             look_command = self.r.get('robot_look_command')
             
-            print(batter_level)
 
             if move_command is None:
                 move_command = "none"
