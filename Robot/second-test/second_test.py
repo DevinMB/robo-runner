@@ -133,5 +133,6 @@ finally:
     Board.setMotor(3, 0)
     Board.setMotor(4, 0)
 
+    battery_feed.stop()
     video_feed.stop()
     video_feed.join()

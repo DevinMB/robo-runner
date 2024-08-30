@@ -6,6 +6,7 @@ import threading
 
 class BatteryFeed(threading.Thread):
     def __init__(self, redis_host='192.168.1.250', redis_port=6379, redis_db=0):
+        super(BatteryFeed, self).__init__()
         self.r = redis.Redis(host=redis_host, port=redis_port, db=redis_db)
         self.running = True
 
