@@ -46,6 +46,11 @@ try:
         # Fetch the current command from Redis
         move_command = r.get('robot_move_command')
         look_command = r.get('robot_look_command')
+        buzzer_command = r.get('robot_buzzer_command')
+
+        if buzzer_command is not None:
+            buzzer_command = buzzer_command.decode('utf-8')
+            Board.setBuzzer(buzzer_command)
 
         if look_command is not None: 
             look_command = look_command.decode('utf-8')
@@ -132,6 +137,7 @@ finally:
     Board.setMotor(2, 0)
     Board.setMotor(3, 0)
     Board.setMotor(4, 0)
+    Board.setBuzzer(0)
 
     battery_feed.stop()
     video_feed.stop()

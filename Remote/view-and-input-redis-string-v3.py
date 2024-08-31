@@ -9,11 +9,14 @@ input_timeout = 1
 
 move_command = "none"
 look_command = "none"
+buzzer_command = 0
 
 def on_press(key):
     global move_command
     global look_command
+    global buzzer_command
     try:
+        # Move
         if key.char == 'w':
             move_command = 'forward'
         elif key.char == 's':
@@ -26,11 +29,8 @@ def on_press(key):
             move_command = 'strafe_left'
         elif key.char == 'e':
             move_command = 'strafe_right'
-    except AttributeError:
-        pass
-
-    try:
-        if key.char == 'o':
+        # Look
+        elif key.char == 'o':
             look_command = 'look_up'
         elif key.char == 'l':
             look_command = 'look_down'
@@ -40,15 +40,20 @@ def on_press(key):
             look_command = 'look_right'
         elif key.char == '0':
             look_command = 'look_home'
+        # Buzzer
+        elif key.char == 'b':
+            buzzer_command = 1
     except AttributeError:
         pass
 
 def on_release(key):
     global move_command
     global look_command
+    global buzzer_command
 
     move_command = 'none'
     look_command = 'none'
+    buzzer_command = 0
     if key == keyboard.Key.esc:
         return False 
 
@@ -76,12 +81,11 @@ while True:
             cv2.putText(frame, overlay_text_look, (10, 470), cv2.FONT_HERSHEY_SIMPLEX, 
                         0.4, (255, 255, 0), 1, cv2.LINE_AA)
             
-            
-            
             cv2.imshow('Video Stream', frame)
 
             r.set('robot_move_command', move_command, ex=input_timeout)
             r.set('robot_look_command', look_command, ex=input_timeout)
+            r.set('robot_buzzer_command',buzzer_command,ex=input_timeout)
 
             if cv2.waitKey(1) & 0xFF == ord('1'):
                 break
