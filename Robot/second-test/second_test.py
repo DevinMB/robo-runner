@@ -49,7 +49,7 @@ try:
         buzzer_command = r.get('robot_buzzer_command')
 
         if buzzer_command is not None:
-            Board.setBuzzer(buzzer_command)
+            Board.setBuzzer(int(buzzer_command))
 
         if look_command is not None: 
             look_command = look_command.decode('utf-8')
